@@ -26,23 +26,13 @@ pipeline {
                 sh 'mvn clean integration-test'
             }
         }
-
-      // stage('Deploy Tomcat Using maven plugin') {
-      //    steps {
-      //       dir("maven/calculator_app") {
-      //          sh 'sudo mvn tomcat7:deploy'
-      //       }
-      //    }
-      // }
-
-    // stage ('Deploy Tomcat Using jenkins plugin') {
-    //    steps {
-    //           script {
-    //               deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://18.191.242.81:8081/')], 
-    //                                contextPath: '/calculator', 
-    //                                war: 'calculator_app/target/calculator.war'
-    //           }
-    //    }
-    // }
+    stage ('Deploy Tomcat Using jenkins plugin') {
+       steps {
+              script {
+                  deploy adapters: [tomcat9(credentialsId: 'tomcatpassword', path: '', 
+                  url: 'http://172.20.168.67:8080/')], contextPath: 'calculator', onFailure: false, war: '/target/calculator.war'
+              }
+       }
+    }
     }
 }
