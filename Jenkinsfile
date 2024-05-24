@@ -1,31 +1,31 @@
+/* groovylint-disable-next-line CompileStatic */
 pipeline {
    agent any 
 
-   tools {
-      maven 'maven_tool'
-   }
+    tools {
+        maven 'maven_tool'
+    }
 
-   stages {
-      stage('BUILD') {
-         steps {
-               sh ''' 
+    stages {
+        stage('BUILD') {
+            steps {
+                sh '''
                   mvn clean package
                '''
-         }
-      }
-
-      stage('UNIT TEST') {
-         steps {
-               sh 'mvn clean test'
             }
-         }
-      }
+        }
 
-      stage('Integration TEST') {
-         steps {
-              sh 'mvn clean integration-test'           
-         }
-      }
+        stage('UNIT TEST') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
+
+        stage('Integration TEST') {
+            steps {
+                sh 'mvn clean integration-test'
+            }
+        }
 
       // stage('Deploy Tomcat Using maven plugin') {
       //    steps {
@@ -35,14 +35,14 @@ pipeline {
       //    }
       // }
 
-      // stage ('Deploy Tomcat Using jenkins plugin') {
-      //    steps {
-      //           script {
-      //               deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://18.191.242.81:8081/')], 
-      //                                contextPath: '/calculator', 
-      //                                war: 'calculator_app/target/calculator.war'
-      //           }
-      //    }
-      // }
-   }
+    // stage ('Deploy Tomcat Using jenkins plugin') {
+    //    steps {
+    //           script {
+    //               deploy adapters: [tomcat9(credentialsId: 'tomcat_manager', path: '', url: 'http://18.191.242.81:8081/')], 
+    //                                contextPath: '/calculator', 
+    //                                war: 'calculator_app/target/calculator.war'
+    //           }
+    //    }
+    // }
+    }
 }
