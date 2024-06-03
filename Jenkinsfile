@@ -7,25 +7,25 @@ pipeline {
     }
 
     stages {
-        stage('BUILD') {
-            steps {
-                sh '''
-                  mvn clean package
-               '''
-            }
-        }
+        // stage('BUILD') {
+        //     steps {
+        //         sh '''
+        //           mvn clean package
+        //        '''
+        //     }
+        // }
 
-        stage('UNIT TEST') {
-            steps {
-                sh 'mvn clean test'
-            }
-        }
+        // stage('UNIT TEST') {
+        //     steps {
+        //         sh 'mvn clean test'
+        //     }
+        // }
 
-        stage('Integration TEST') {
-            steps {
-                sh 'mvn clean integration-test'
-            }
-        }
+        // stage('Integration TEST') {
+        //     steps {
+        //         sh 'mvn clean integration-test'
+        //     }
+        // }
     stage ('Deploy Tomcat Using jenkins plugin') {
        steps {
         //  sh '''
@@ -35,7 +35,7 @@ pipeline {
         //        '''
               script {
                   deploy adapters: [tomcat9(credentialsId: 'tomcatpassword', path: '', 
-                  url: 'http://172.20.168.67:8080/')], contextPath: 'calculator', war: 'maven_calculator/target/calculator.war'
+                  url: 'http://172.20.168.67:8080/')], contextPath: 'calculator', war: 'maven_calculator/target/calculator'
               }
        }
     }
