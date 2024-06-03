@@ -30,7 +30,7 @@ pipeline {
        steps {
               script {
                   deploy adapters: [tomcat9(credentialsId: 'tomcatpassword', path: '', 
-                  url: 'http://172.20.168.67:8080/')], 
+                  url: 'https://172.20.168.67:8080/')], 
                   contextPath: '/calculator', war: '**/*.war'
        }
     }
