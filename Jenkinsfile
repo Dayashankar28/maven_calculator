@@ -15,17 +15,17 @@ pipeline {
             }
         }
 
-        // stage('UNIT TEST') {
-        //     steps {
-        //         sh 'mvn clean test'
-        //     }
-        // }
+        stage('UNIT TEST') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
 
-        // stage('Integration TEST') {
-        //     steps {
-        //         sh 'mvn clean integration-test'
-        //     }
-        // }
+        stage('Integration TEST') {
+            steps {
+                sh 'mvn clean integration-test'
+            }
+        }
     stage ('Deploy Tomcat Using jenkins plugin') {
        steps {
               script {
