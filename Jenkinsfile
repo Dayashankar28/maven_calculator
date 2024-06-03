@@ -28,7 +28,7 @@ pipeline {
         }
     stage ('Deploy Tomcat Using jenkins plugin') {
        steps {
-         sh 'cd target/'
+         sh 'cd ./target/'
          sh 'ls'
               script {
                   deploy adapters: [tomcat9(credentialsId: 'tomcatpassword', path: '', 
