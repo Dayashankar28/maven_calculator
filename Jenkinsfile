@@ -28,8 +28,8 @@ pipeline {
         }
     stage ('Deploy Tomcat Using jenkins plugin') {
        steps {
-         sh 'cd ./target/'
-         sh 'pwd'
+         sh 'cd target/'
+         sh 'ls'
               script {
                   deploy adapters: [tomcat9(credentialsId: 'tomcatpassword', path: '', 
                   url: 'http://172.20.168.67:8080/')], contextPath: 'calculator', onFailure: false, war: '/var/lib/jenkins/workspace/maven_calculator/target/calculator.war'
